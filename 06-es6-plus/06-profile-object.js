@@ -1,0 +1,10 @@
+let name="haris";
+let age=21;
+let isstudent=true;
+let myhobby;
+let favlanguage=null;
+console.log(name);
+console.log(age);
+console.log(isstudent);
+console.log(myhobby);
+console.log(favlanguage);

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript & Web APIs Complete Revision Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+
+  @page {
+    size: A4;
+    margin: 18mm 16mm;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1e293b;
+    background: #ffffff;
+    line-height: 1.55;
+    font-size: 13.5px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cover {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 90vh;
+    padding: 40px 20px;
+  }
+
+  .badge {
+    background: #fef3c7;
+    color: #92400e;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border: 1px solid #fde68a;
+  }
+
+  h1.title {
+    font-size: 38px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.15;
+    margin: 0 0 16px 0;
+  }
+
+  h1.title span {
+    color: #d97706;
+  }
+
+  p.subtitle {
+    font-size: 18px;
+    color: #475569;
+    max-width: 600px;
+    margin: 0 0 40px 0;
+    line-height: 1.5;
+  }
+
+  .toc-box {
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .toc-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: #0f172a;
+    margin-bottom: 14px;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .toc-item {
+    font-size: 13px;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .toc-number {
+    font-weight: 700;
+    color: #d97706;
+    background: #fffbeb;
+    border-radius: 6px;
+    padding: 2px 7px;
+    font-size: 12px;
+  }
+
+  .chapter-header {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #ffffff;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 32px 0 20px 0;
+    page-break-after: avoid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .chapter-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .chapter-tag {
+    background: #d97706;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+  }
+
+  .card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 18px;
+    page-break-inside: avoid;
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-title::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 18px;
+    background: #d97706;
+    border-radius: 3px;
+  }
+
+  .concept-desc {
+    color: #334155;
+    margin: 0 0 10px 0;
+    font-size: 13.5px;
+  }
+
+  .hinglish-box {
+    background: #fffbeb;
+    border-left: 3px solid #f59e0b;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #78350f;
+  }
+
+  .hinglish-box strong {
+    color: #b45309;
+    display: block;
+    margin-bottom: 2px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  pre {
+    background: #090d16;
+    color: #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+    overflow-x: hidden;
+  }
+
+  .keyword { color: #f43f5e; font-weight: 600; }
+  .string { color: #10b981; }
+  .function { color: #38bdf8; }
+  .number { color: #fbbf24; }
+  .comment { color: #64748b; font-style: italic; }
+
+  .key-takeaway {
+    background: #ecfdf5;
+    border-left: 3px solid #10b981;
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12.5px;
+    color: #065f46;
+    margin-top: 8px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 12.5px;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 8px 10px;
+    text-align: left;
+  }
+
+  th {
+    background: #f1f5f9;
+    color: #0f172a;
+    font-weight: 700;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">Master Revision Guide</div>
+  <h1 class="title">JavaScript &amp; APIs<br><span>Concept Recall Handbook</span></h1>
+  <p class="subtitle">Aapke sabhi covered concepts ka crystal-clear summary, visual examples, aur Roman Urdu explanations — dimagh mein concepts pakkay karne ke liye.</p>
+  
+  <div class="toc-box">
+    <div class="toc-title">Table of Contents / Index:</div>
+    <div class="toc-grid">
+      <div class="toc-item"><span class="toc-number">01</span> JavaScript Fundamentals</div>
+      <div class="toc-item"><span class="toc-number">02</span> Asynchronous JavaScript</div>
+      <div class="toc-item"><span class="toc-number">03</span> Fetch API &amp; HTTP Methods</div>
+      <div class="toc-item"><span class="toc-number">04</span> REST API Architecture</div>
+      <div class="toc-item"><span class="toc-number">05</span> ES6+ Modern Essentials</div>
+      <div class="toc-item"><span class="toc-number">06</span> Quick Recall Cheat Sheet</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CHAPTER 1 ================= -->
+<div class="chapter-header">
+  <h2>1. JavaScript Fundamentals</h2>
+  <span class="chapter-tag">Core Concepts</span>
+</div>
+
+<div class="card">
+  <div class="card-title">1.1 Variables: var vs let vs const</div>
+  <div class="hinglish-box">
+    <strong>Dimaag me yaad rakhne ki trick:</strong>
+    <code>var</code> purana hai (function scoped, re-declare ho jata hai, bugs paida karta hai). Hamesha <code>const</code> use karein default ke tor par; agar value baad me badalni ho tabhi <code>let</code> lagayein. Dono block-scoped hote hain <code>{ }</code>.
+  </div>
+  <table>
+    <tr><th>Keyword</th><th>Scope</th><th>Re-assign</th><th>Re-declare</th></tr>
+    <tr><td><code>var</code></td><td>Function Scope</td><td>Yes</td><td>Yes (Dangerous)</td></tr>
+    <tr><td><code>let</code></td><td>Block Scope { }</td><td>Yes</td><td>No</td></tr>
+    <tr><td><code>const</code></td><td>Block Scope { }</td><td>No</td><td>No</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <div class="card-title">1.2 Scope &amp; Closures</div>
+  <div class="hinglish-box">
+    <strong>Closure kya hota hai?</strong>
+    Jab ek inner function apne parent (outer) function ke variables ko us waqt bhi yaad rakhta hai jab parent function execute hokar finish ho chuka ho. Isko <b>Closure</b> kehte hain.
+  </div>
+  <pre><span class="keyword">function</span> <span class="function">createCounter</span>() {
+    <span class="keyword">let</span> count = <span class="number">0</span>;
+    <span class="keyword">return</span> <span class="keyword">function</span>() {
+        count++;
+        <span class="keyword">return</span> count;
+    };
+}
+<span class="keyword">const</span> counter = <span class="function">createCounter</span>();
+counter(); <span class="comment">// Output: 1</span>
+counter(); <span class="comment">// Output: 2 (count retain raha!)</span></pre>
+</div>
+
+<div class="card">
+  <div class="card-title">1.3 Essential Array Methods (map, filter, reduce)</div>
+  <div class="hinglish-box">
+    <strong>Farq aur istemaal:</strong>
+    <br>&bull; <b>map():</b> Har item ko badal kar same size ka new array banata hai.
+    <br>&bull; <b>filter():</b> Condition match karne wale items ka chhota/barabar array banata hai.
+    <br>&bull; <b>reduce():</b> Saare items ko combine karke single value (total/object) nikalta hai.
+  </div>
+  <pre><span class="keyword">const</span> nums = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>];
+<span class="keyword">const</span> doubled = nums.<span class="function">map</span>(n =&gt; n * <span class="number">2</span>);        <span class="comment">// [20, 40, 60]</span>
+<span class="keyword">const</span> above15 = nums.<span class="function">filter</span>(n =&gt; n &gt; <span class="number">15</span>);     <span class="comment">// [20, 30]</span>
+<span class="keyword">const</span> total = nums.<span class="function">reduce</span>((acc, curr) =&gt; acc + curr, <span class="number">0</span>); <span class="comment">// 60</span></pre>
+</div>
+
+<!-- ================= CHAPTER 2 ================= -->
+<div class="page-break"></div>
+<div class="chapter-header">
+  <h2>2. Asynchronous JavaScript</h2>
+  <span class="chapter-tag">Promises &amp; Async</span>
+</div>
+
+<div class="card">
+  <div class="card-title">2.1 Callbacks aur Callback Hell</div>
+  <div class="hinglish-box">
+    <strong>Concept:</strong> Callback ek function hota hai jo doosre function ko as an argument pass hota hai taake kaam khatam hone par run ho. Jab ek ke andar ek bohot se callbacks aane lagein to usay "Pyramid of Doom" ya Callback Hell bolte hain. Isko khatam karne ke liye Promises aaye!
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">2.2 Promises: States aur Methods</div>
+  <div class="hinglish-box">
+    <strong>Promise ki 3 States:</strong>
+    1. <b>Pending:</b> Kaam chal raha hai.
+    2. <b>Fulfilled:</b> Kaam kamiyab (<code>resolve()</code> call hua &rarr; <code>.then()</code> chalega).
+    3. <b>Rejected:</b> Error agaya (<code>reject()</code> call hua &rarr; <code>.catch()</code> chalega).
+  </div>
+  <pre><span class="keyword">const</span> checkStock = <span class="keyword">new</span> <span class="function">Promise</span>((resolve, reject) =&gt; {
+    <span class="keyword">let</span> inStock = <span class="keyword">true</span>;
+    <span class="keyword">if</span> (inStock) resolve(<span class="string">"Order Delivered"</span>);
+    <span class="keyword">else</span> reject(<span class="string">"Out of Stock"</span>);
+});
+
+checkStock
+    .<span class="function">then</span>(msg =&gt; console.<span class="function">log</span>(msg))
+    .<span class="function">catch</span>(err =&gt; console.<span class="function">log</span>(err))
+    .<span class="function">finally</span>(() =&gt; console.<span class="function">log</span>(<span class="string">"Har haal me chalega"</span>));</pre>
+</div>
+
+<div class="card">
+  <div class="card-title">2.3 Promise Combinators Comparison</div>
+  <table>
+    <tr><th>Combinator</th><th>Kab resolve hota hai?</th><th>Kab reject hota hai?</th></tr>
+    <tr><td><b>Promise.all</b></td><td>Jab SARE promises resolve hon</td><td>Agar EK BHI reject ho jaye (Fast fail)</td></tr>
+    <tr><td><b>Promise.allSettled</b></td><td>SARE complete hon (resolve/reject dono report milte hain)</td><td>Kabhi reject nahi hota</td></tr>
+    <tr><td><b>Promise.race</b></td><td>Jo pehla settle ho (chahe resolve ho ya reject)</td><td>Jo pehla settle ho agar reject nikle</td></tr>
+    <tr><td><b>Promise.any</b></td><td>Jo PEHLA resolve ho jaye</td><td>Sirf tab agar SARE ke SARE reject hon</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <div class="card-title">2.4 Async / Await with Try / Catch</div>
+  <div class="hinglish-box">
+    <strong>Cleanest Way:</strong> Yeh promises ko synchronous code ki tarah likhne ka syntax sugar hai. <code>await</code> sirf <code>async</code> function ke andar kaam karta hai aur promise resolve hone ka intezar karta hai.
+  </div>
+  <pre><span class="keyword">async function</span> <span class="function">loadData</span>() {
+    <span class="keyword">try</span> {
+        <span class="keyword">let</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(<span class="string">"https://api.example.com/data"</span>);
+        <span class="keyword">if</span> (!response.ok) <span class="keyword">throw new</span> <span class="function">Error</span>(<span class="string">"Status "</span> + response.status);
+        <span class="keyword">let</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();
+        console.<span class="function">log</span>(data);
+    } <span class="keyword">catch</span> (error) {
+        console.<span class="function">log</span>(<span class="string">"Catched Error:"</span>, error.message);
+    }
+}</pre>
+</div>
+
+<!-- ================= CHAPTER 3 & 4 ================= -->
+<div class="page-break"></div>
+<div class="chapter-header">
+  <h2>3. Fetch API &amp; HTTP Requests</h2>
+  <span class="chapter-tag">Network &amp; APIs</span>
+</div>
+
+<div class="card">
+  <div class="card-title">3.1 HTTP Methods (CRUD Operations)</div>
+  <table>
+    <tr><th>Method</th><th>CRUD Action</th><th>Description / Use Case</th></tr>
+    <tr><td><b>GET</b></td><td>Read</td><td>Server se data mangwana (koi body nahi hoti)</td></tr>
+    <tr><td><b>POST</b></td><td>Create</td><td>Server par naya record bhejna (body me JSON data hota hai)</td></tr>
+    <tr><td><b>PUT</b></td><td>Update (Full)</td><td>Poore object ko nayi values se replace karna</td></tr>
+    <tr><td><b>PATCH</b></td><td>Update (Partial)</td><td>Sirf specific field update karna (e.g. sirf email)</td></tr>
+    <tr><td><b>DELETE</b></td><td>Delete</td><td>Server se record remove karna</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <div class="card-title">3.2 HTTP Status Codes Quick Sheet</div>
+  <div class="hinglish-box">
+    <strong>Interview Tips:</strong>
+    <br>&bull; <b>200 OK:</b> Request kamiyab hui.
+    <br>&bull; <b>201 Created:</b> Naya resource ban gaya (POST me milta hai).
+    <br>&bull; <b>400 Bad Request:</b> Client ne data ghalat bheja.
+    <br>&bull; <b>401 Unauthorized:</b> Login/Token missing hai.
+    <br>&bull; <b>404 Not Found:</b> URL ya resource mojood nahi.
+    <br>&bull; <b>500 Internal Server Error:</b> Server ke code me masla hai.
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">3.3 Headers &amp; JSON Handling</div>
+  <div class="hinglish-box">
+    <code>JSON.stringify(obj)</code> JavaScript object ko text me badalta hai taake server ko bheja ja sake.<br>
+    <code>response.json()</code> server ke text ko wapis JS object me convert karta hai.
+  </div>
+  <pre><span class="keyword">const</span> res = <span class="keyword">await</span> <span class="function">fetch</span>(<span class="string">"https://jsonplaceholder.typicode.com/posts"</span>, {
+    method: <span class="string">"POST"</span>,
+    headers: {
+        <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span>, <span class="comment">// Server ko batata hai hum JSON bhej rahe hain</span>
+        <span class="string">"Accept"</span>: <span class="string">"application/json"</span>
+    },
+    body: JSON.<span class="function">stringify</span>({ title: <span class="string">"Title"</span>, body: <span class="string">"Content"</span>, userId: <span class="number">1</span> })
+});</pre>
+</div>
+
+<!-- ================= CHAPTER 4 ================= -->
+<div class="chapter-header">
+  <h2>4. REST API Concepts</h2>
+  <span class="chapter-tag">Architecture</span>
+</div>
+
+<div class="card">
+  <div class="card-title">Route Parameters vs Query Parameters</div>
+  <table>
+    <tr><th>Type</th><th>Example URL</th><th>Kab use hota hai?</th></tr>
+    <tr>
+      <td><b>Route Parameter</b><br>(Path Variable)</td>
+      <td><code>/users/<b>5</b></code><br><code>/posts/<b>102</b></code></td>
+      <td>Kisi <b>specific ID</b> ya single unique resource ko identify karne ke liye.</td>
+    </tr>
+    <tr>
+      <td><b>Query Parameter</b><br>(Query String)</td>
+      <td><code>/users?<b>_limit=5</b></code><br><code>/products?<b>category=shoes&amp;page=2</b></code></td>
+      <td>Data ko <b>filter, search, sort, ya paginate</b> karne ke liye (<code>?key=value&amp;key2=val</code>).</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ================= CHAPTER 5 ================= -->
+<div class="page-break"></div>
+<div class="chapter-header">
+  <h2>5. ES6+ Modern JavaScript</h2>
+  <span class="chapter-tag">Modern Syntax</span>
+</div>
+
+<div class="card">
+  <div class="card-title">5.1 Destructuring &amp; Spread Operator</div>
+  <pre><span class="comment">// Destructuring (Directly extracting values)</span>
+<span class="keyword">const</span> user = { name: <span class="string">"Ahmed"</span>, age: <span class="number">22</span>, city: <span class="string">"Lahore"</span> };
+<span class="keyword">const</span> { name, age } = user;
+
+<span class="comment">// Spread Operator ... (Copying or merging)</span>
+<span class="keyword">const</span> nums = [<span class="number">1</span>, <span class="number">2</span>];
+<span class="keyword">const</span> moreNums = [...nums, <span class="number">3</span>, <span class="number">4</span>]; <span class="comment">// [1, 2, 3, 4]</span>
+<span class="keyword">const</span> updatedUser = { ...user, age: <span class="number">23</span> };</pre>
+</div>
+
+<div class="card">
+  <div class="card-title">5.2 Optional Chaining (?.) &amp; Nullish Coalescing (??)</div>
+  <div class="hinglish-box">
+    <strong>Crash se bachne ke tools:</strong><br>
+    &bull; <code>?.</code> Agar property mojood na ho to error throw karke app crash nahi karta, balkay <code>undefined</code> return karta hai.<br>
+    &bull; <code>??</code> Sirf tab fallback deta hai jab value <code>null</code> ya <code>undefined</code> ho (0 ya false ko valid manta hai).
+  </div>
+  <pre><span class="keyword">const</span> data = { user: { profile: <span class="keyword">null</span> } };
+console.<span class="function">log</span>(data.user.profile?.avatar); <span class="comment">// undefined (No error!)</span>
+
+<span class="keyword">let</span> userScore = <span class="number">0</span>;
+<span class="keyword">let</span> score = userScore ?? <span class="number">10</span>; <span class="comment">// Output: 0 (|| hota toh 10 kardeta!)</span></pre>
+</div>
+
+<div class="card">
+  <div class="card-title">5.3 ES Modules: import &amp; export</div>
+  <pre><span class="comment">// math.js</span>
+<span class="keyword">export function</span> <span class="function">add</span>(a, b) { <span class="keyword">return</span> a + b; }
+<span class="keyword">export const</span> PI = <span class="number">3.14</span>;
+
+<span class="comment">// app.js</span>
+<span class="keyword">import</span> { add, PI } <span class="keyword">from</span> <span class="string">"./math.js"</span>;
+console.<span class="function">log</span>(<span class="function">add</span>(<span class="number">5</span>, <span class="number">10</span>));</pre>
+  <div class="key-takeaway">
+    <b>Note:</b> Node.js me ES modules use karne ke liye <code>package.json</code> me <code>"type": "module"</code> likhna zaroori hota hai.
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Daily Revision Strategy (Aapke liye)</div>
+  <div class="hinglish-box">
+    <strong>Practice Formula:</strong><br>
+    1. Har roz 1 folder pakrein (e.g. <code>02-asynchronous</code>).<br>
+    2. File ka code bina dekhe apne lafzon me run karein.<br>
+    3. Error aaye to console error read karein aur fix karein.<br>
+    4. Jab code chal jaye to JSONPlaceholder ke sath real test karein!
+  </div>
+</div>
+
+</body>
+</html>
