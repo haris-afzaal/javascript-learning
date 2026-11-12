@@ -1,0 +1,2 @@
+Learning Git pull with my JavaScript project.
+This file was created directly on GitHub.
